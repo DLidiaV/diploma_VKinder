@@ -1,0 +1,6 @@
+/venv/
+.venv
+config.py
+/idea/
+/.idea/
+.idea

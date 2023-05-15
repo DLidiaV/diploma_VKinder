@@ -1,0 +1,21 @@
+Metadata-Version: 2.1
+Name: vk-bots
+Version: 0.5
+Summary: VK API wrapper
+Home-page: https://github.com/termisaal/VKBotsAPI
+Author: Misaal
+Author-email: termisaal@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Natural Language :: Russian
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+
+# VKBotsAPI
+[![](https://img.shields.io/badge/VK-termisaal-4a76a8)](https://vk.com/termisaal)
+Библиотека для работы с событиями из сообщества ВКонтакте в режиме реального времени
+
+

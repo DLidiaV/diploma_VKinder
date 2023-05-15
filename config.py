@@ -1,0 +1,7 @@
+""" токен пользователя """
+user_token = 'vk1.a.awee5n8S1Adf9cchMIHjvvB8rYo2k0jv14_VFvH4kP6LcArBa_TcU_Xa6O12QUMp2_0W00Ea-9v-WjhxzkZZL9uc7TnuzvRQIethP0-2wXv6JRqTH_DWVHYIoQlaV5DXVcHwOzomVOug9m0AVew0QJ7gf8zVm1PIC_1NxhSCoOQk1_11L8mMK4n-BURf9OTY'
+
+"""токен сообщества"""
+comm_token = 'vk1.a.L_wV76ObgcI1tj7IVHb7xhoQ9MlON0Xii91AD-Ea1dgwf7B2fw94Hrgj0C-lOze_MhnvnKgkObyr72sd9JMEX7MtzhZAgQmqzhYWf2CXBPg12X05gBQoi6SlCT03CGFF3b-3ZistZcLbTJ725RyzPdaHFf52TSQUaKwXBwNDjrORr2qe46Mmy5ja61cGC7Nhrae9QPO6IQ7nGy071J8u0g'
+
+db_url_object = "postgresql+psycopg2://postgres:18021985@localhost:5432/VKinder_database"
