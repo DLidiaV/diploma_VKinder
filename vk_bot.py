@@ -1,6 +1,3 @@
-# from config import db_url_object
-# from sqlalchemy import create_engine
-# from sqlalchemy.orm import Session
 import vk_api
 from vk_api.utils import get_random_id
 from vk_api.longpoll import VkLongPoll, VkEventType
@@ -91,24 +88,26 @@ class VkBot:
                                       keyboard=keyboard)
                 elif command == "поиск":
                     keyboard = self.do_keyboard()
-                    users = self.api.search_users(self.params_input(user_id=user_id))
+                    # temp_params = self.params_input(user_id=user_id)
+                    users = self.api.search_users(self.params)
                     offset += 1
-                    user = users.pop()
                     for user in users:
                         one = Rightpeople(user_id=self.params['id'], partner_id=user['id'])
-                        if not one.people_in_db:
+                        self.works_people.append(user)
+                        if not one.people_in_db():
                             one.add_in_db(user_id=user_id, partner_id=user['id'])
                             self.works_people.append(user)
-                    photos_user = self.api.get_photos(user['id'])
-                    self.message_send(user_id, f'Есть {len(self.works_people)} найденных пользователей',
+                        photos_user = self.api.get_photos(user['id'])
+                        self.message_send(user_id, f'Есть {len(self.works_people)} найденных пользователей',
                                       keyboard=keyboard)
-                    self.message_send(user_id, f'https://vk.com/id{user["id"]}, {user["name"]}',
+                        self.message_send(user_id, f'https://vk.com/id{user["id"]}, {user["name"]}',
                                       photos_user, keyboard=keyboard)
                 elif command == 'следующий':
                     keyboard = self.do_keyboard()
-                    if self.works_people == [] and users is None:
+                    if self.works_people == [] or users is None:
                         offset += 10
-                        users = self.api.search_users(self.params_input(user_id=user_id), offset)
+                        # temp_params = self.params_input(user_id=user_id)
+                        users = self.api.search_users(self.params, offset)
                         user = users.pop()
                         photos_user = self.api.get_photos(user['id'])
                         self.message_send(user_id, f'Подходящий пользователь: https://vk.com/id{user["id"]}, '
@@ -130,6 +129,4 @@ class VkBot:
 if __name__ == '__main__':
     bot = VkBot(comm_token, user_token)
     bot.new_message()
-    bot.message_send(789718381, 'Hello')
-    bot.params_input(789718381)
-    print(bot.works_people)
+

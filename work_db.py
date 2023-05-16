@@ -38,10 +38,11 @@ class Rightpeople(Base):
         engine = create_engine(db_url_object)
         sessionmaker(bind=engine)
         session = Session()
-        return session.query(Rightpeople).filter_by(
+        found = session.query(Rightpeople).filter_by(
             user_id=self.user_id,
             partner_id=self.partner_id
-             ) is not None
+        )
+        return found is not None
 
 
 if __name__ == '__main__':

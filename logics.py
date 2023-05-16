@@ -85,7 +85,4 @@ class VkTools:
 
 if __name__ == '__main__':
     bot = VkTools(user_token)
-    params = bot.get_profile_info(789718381)
-    users = bot.search_users(params)
-    print(users)
-    print(bot.get_photos(users[8]['id']))
+
