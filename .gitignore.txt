@@ -1,5 +1,0 @@
-/venv/
-.venv
-config.py
-/.idea/
-.idea

@@ -1,8 +1,7 @@
 from config import db_url_object
 import sqlalchemy as sq
 from sqlalchemy import create_engine, MetaData
-from sqlalchemy.orm import Session, declarative_base, sessionmaker
-
+from sqlalchemy.orm import Session, declarative_base
 
 metadata = MetaData()
 Base = declarative_base()
@@ -28,21 +27,9 @@ class Rightpeople(Base):
     def extract_from_db(self, user_id, partner_id):
         engine = create_engine(db_url_object)
         with Session(engine) as session:
-            from_bd = session.query(Rightpeople).filter(Rightpeople.user_id == user_id).all()
-            for item in from_bd:
-                if item.partner_id == partner_id:
-                    return False
-        return f'Запись извлечена из БД'
-
-    def people_in_db(self):
-        engine = create_engine(db_url_object)
-        sessionmaker(bind=engine)
-        session = Session()
-        found = session.query(Rightpeople).filter_by(
-            user_id=self.user_id,
-            partner_id=self.partner_id
-        )
-        return found is not None
+            from_bd = session.query(Rightpeople).filter(Rightpeople.user_id == user_id,
+                                                        Rightpeople.partner_id == partner_id).first()
+            return True if from_bd else False
 
 
 if __name__ == '__main__':
